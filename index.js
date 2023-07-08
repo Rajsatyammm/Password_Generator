@@ -3,8 +3,8 @@ let dataCpy = document.querySelector('[data-copy]');
 let inputSlider = document.querySelector('[data-lengthSlider]');
 let upperCase = document.querySelector('#upperCase');
 let lowerCase = document.querySelector('#lowerCase');
-let number = document.querySelector('#number');
-let symbol = document.querySelector('#symbol');
+let numbers = document.querySelector('#number');
+let symbols = document.querySelector('#symbol');
 let dataIndicator = document.querySelector('[data-Indicator]');
 let indicator = document.querySelector('[data-Indicator]');
 let passwordGenerate = document.querySelector('#generate_Password');
@@ -51,20 +51,21 @@ function generateSymbol() {
 }
 
 function calcStrength() {
+    console.log('main call hua bro');
     let hasUpper = false;
     let hasLower = false;
     let hasNumber = false;
     let hasSymbol = false;
 
-    if (upperCase.cheaked) hasUpper = true;
-    if (lowerCase.cheaked) hasLower = true;
-    if (hasNumber.chaaked) hasNumber = true;
-    if (hasSymbol.cheaked) hasSymbol = true;
+    if (upperCase.checked) hasUpper = true;
+    if (lowerCase.checked) hasLower = true;
+    if (numbers.checked) hasNumber = true;
+    if (symbols.checked) hasSymbol = true;
 
     if (hasUpper && hasLower && (hasNumber || hasSymbol) && passwordLength >= 8) {
         setIndicator('#0f0');
     }
-    else if ((hasLower || hasUpper) && (hasNum && hasSymbol) && passwordLength >= 6) {
+    else if ((hasLower || hasUpper) && (hasNumber || hasSymbol) && passwordLength >= 6) {
         setIndicator('#ff0');
     }
     else {
@@ -148,8 +149,8 @@ let generatePass = () => {
 
     if (upperCase.checked) funArr.push(generateUpperCase);
     if (lowerCase.checked) funArr.push(generateLowerCase);
-    if (number.checked) funArr.push(generateRandomNo);
-    if (symbol.checked) funArr.push(generateSymbol);
+    if (numbers.checked) funArr.push(generateRandomNo);
+    if (symbols.checked) funArr.push(generateSymbol);
 
     // compulsory
     for (let i = 0; i < funArr.length; i++)
